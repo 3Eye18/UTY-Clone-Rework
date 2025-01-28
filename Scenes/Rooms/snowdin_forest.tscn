@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c47lk3wbneb53"]
+[gd_scene load_steps=14 format=3 uid="uid://c47lk3wbneb53"]
 
 [ext_resource type="Texture2D" uid="uid://cyd7vgb3rqx02" path="res://Asset/Sprites/Area/Snowdin Forest.png" id="1_1xilt"]
 [ext_resource type="Script" path="res://Scripts/Rooms/snowdin_forest.gd" id="1_vhvcf"]
-[ext_resource type="PackedScene" uid="uid://c0oy0i2kmd5m2" path="res://Scenes/Characters/clover.tscn" id="2_eviie"]
 [ext_resource type="Texture2D" uid="uid://lf8qwkf6mgvd" path="res://Asset/Sprites/Area/Snowdin Forest Leaves.png" id="2_yie2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjnce"]
@@ -10,6 +9,33 @@ size = Vector2(44, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ta7du"]
 size = Vector2(46, 512)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1rsds"]
+distance = -255.5
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ob0g8"]
+normal = Vector2(0, 1)
+distance = -256.5
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ob1nd"]
+normal = Vector2(1, 0)
+distance = -112.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xlrl4"]
+normal = Vector2(-1, 0)
+distance = -112.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyd3w"]
+size = Vector2(66, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsul4"]
+size = Vector2(66, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lc8o"]
+size = Vector2(16, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec6y7"]
+size = Vector2(16, 24)
 
 [node name="SnowdinForest" type="Node2D"]
 script = ExtResource("1_vhvcf")
@@ -20,25 +46,57 @@ script = ExtResource("1_vhvcf")
 texture_filter = 1
 position = Vector2(320, 256.5)
 texture = ExtResource("1_1xilt")
-metadata/_edit_group_ = true
 
 [node name="SnowdinForestLeaves" type="Sprite2D" parent="SnowdinForest"]
 z_index = 1
 texture_filter = 1
 texture = ExtResource("2_yie2g")
 
-[node name="Clover" parent="." instance=ExtResource("2_eviie")]
-position = Vector2(252, 264)
+[node name="ShadowArea" type="Area2D" parent="SnowdinForest/SnowdinForestLeaves"]
+position = Vector2(-320, -256.5)
 
-[node name="ShadowArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShadowArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnowdinForest/SnowdinForestLeaves/ShadowArea"]
 position = Vector2(222, 256)
 shape = SubResource("RectangleShape2D_yjnce")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="ShadowArea"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SnowdinForest/SnowdinForestLeaves/ShadowArea"]
 position = Vector2(419, 256)
 shape = SubResource("RectangleShape2D_ta7du")
 
-[connection signal="body_entered" from="ShadowArea" to="." method="_on_shadow_area_body_entered"]
-[connection signal="body_exited" from="ShadowArea" to="." method="_on_shadow_area_body_exited"]
+[node name="Marker2D" type="Marker2D" parent="SnowdinForest"]
+unique_name_in_owner = true
+position = Vector2(0, 231.5)
+
+[node name="Walls" type="StaticBody2D" parent="SnowdinForest"]
+
+[node name="BorderBot" type="CollisionShape2D" parent="SnowdinForest/Walls"]
+shape = SubResource("WorldBoundaryShape2D_1rsds")
+
+[node name="BorderTop" type="CollisionShape2D" parent="SnowdinForest/Walls"]
+shape = SubResource("WorldBoundaryShape2D_ob0g8")
+
+[node name="BorderLeft" type="CollisionShape2D" parent="SnowdinForest/Walls"]
+shape = SubResource("WorldBoundaryShape2D_ob1nd")
+
+[node name="BorderRight" type="CollisionShape2D" parent="SnowdinForest/Walls"]
+shape = SubResource("WorldBoundaryShape2D_xlrl4")
+
+[node name="Fence1" type="CollisionShape2D" parent="SnowdinForest/Walls"]
+position = Vector2(-79, 238.5)
+shape = SubResource("RectangleShape2D_kyd3w")
+
+[node name="Fence2" type="CollisionShape2D" parent="SnowdinForest/Walls"]
+position = Vector2(79, 238.5)
+shape = SubResource("RectangleShape2D_xsul4")
+
+[node name="Pole1" type="CollisionShape2D" parent="SnowdinForest/Walls"]
+position = Vector2(-48, 19.5)
+shape = SubResource("RectangleShape2D_8lc8o")
+
+[node name="Pole2" type="CollisionShape2D" parent="SnowdinForest/Walls"]
+position = Vector2(52, 19.5)
+shape = SubResource("RectangleShape2D_ec6y7")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="body_entered" from="SnowdinForest/SnowdinForestLeaves/ShadowArea" to="." method="_on_shadow_area_body_entered"]
+[connection signal="body_exited" from="SnowdinForest/SnowdinForestLeaves/ShadowArea" to="." method="_on_shadow_area_body_exited"]

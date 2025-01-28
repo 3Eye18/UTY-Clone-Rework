@@ -271,7 +271,7 @@ states/finger_gun/position = Vector2(382, -2.03278)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_o07xb"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_g0vxl"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_4xvow"), "Idle", "finger_gun", SubResource("AnimationNodeStateMachineTransition_b1qqn"), "finger_gun", "Idle", SubResource("AnimationNodeStateMachineTransition_a7x3c")]
 graph_offset = Vector2(0, -42.8115)
 
-[node name="Clover" type="CharacterBody2D" groups=["player"]]
+[node name="Clover" type="CharacterBody2D" groups=["character", "player"]]
 y_sort_enabled = true
 platform_on_leave = 2
 platform_floor_layers = 4278190080

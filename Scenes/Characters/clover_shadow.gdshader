@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 // Adjust this value to control the darkness
 // 0.5 for shadow
+// 1 for normal
 // 1.5 for light
 uniform float darken_factor = 0.5;
 

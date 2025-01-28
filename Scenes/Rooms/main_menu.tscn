@@ -6,6 +6,7 @@
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_r7xcq")
+area = "SNOWDIN"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -74,7 +75,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 theme_override_fonts/font = ExtResource("2_6erus")
 theme_override_font_sizes/font_size = 33
-text = "Dunes - Cave"
+text = "Snowdin - Forest"
 vertical_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer"]
