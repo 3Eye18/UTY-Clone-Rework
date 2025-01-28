@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0c2lxjuq5222"
+path="res://.godot/imported/Talk Mooch.wav-240a3bbebf2103fd34862c5657da4208.sample"
+
+[deps]
+
+source_file="res://Asset/Sounds/Talk Mooch.wav"
+dest_files=["res://.godot/imported/Talk Mooch.wav-240a3bbebf2103fd34862c5657da4208.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

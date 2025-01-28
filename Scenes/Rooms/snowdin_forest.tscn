@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://c47lk3wbneb53"]
+
+[ext_resource type="Texture2D" uid="uid://cyd7vgb3rqx02" path="res://Asset/Sprites/Area/Snowdin Forest.png" id="1_1xilt"]
+[ext_resource type="Script" path="res://Scripts/Rooms/snowdin_forest.gd" id="1_vhvcf"]
+[ext_resource type="PackedScene" uid="uid://c0oy0i2kmd5m2" path="res://Scenes/Characters/clover.tscn" id="2_eviie"]
+[ext_resource type="Texture2D" uid="uid://lf8qwkf6mgvd" path="res://Asset/Sprites/Area/Snowdin Forest Leaves.png" id="2_yie2g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjnce"]
+size = Vector2(44, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ta7du"]
+size = Vector2(46, 512)
+
+[node name="SnowdinForest" type="Node2D"]
+script = ExtResource("1_vhvcf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="SnowdinForest" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(320, 256.5)
+texture = ExtResource("1_1xilt")
+metadata/_edit_group_ = true
+
+[node name="SnowdinForestLeaves" type="Sprite2D" parent="SnowdinForest"]
+z_index = 1
+texture_filter = 1
+texture = ExtResource("2_yie2g")
+
+[node name="Clover" parent="." instance=ExtResource("2_eviie")]
+position = Vector2(252, 264)
+
+[node name="ShadowArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShadowArea"]
+position = Vector2(222, 256)
+shape = SubResource("RectangleShape2D_yjnce")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ShadowArea"]
+position = Vector2(419, 256)
+shape = SubResource("RectangleShape2D_ta7du")
+
+[connection signal="body_entered" from="ShadowArea" to="." method="_on_shadow_area_body_entered"]
+[connection signal="body_exited" from="ShadowArea" to="." method="_on_shadow_area_body_exited"]

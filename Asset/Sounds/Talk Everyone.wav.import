@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bup6xqk4w11bq"
+path="res://.godot/imported/Talk Everyone.wav-21dae83019dfd8addbcfe990107a102d.sample"
+
+[deps]
+
+source_file="res://Asset/Sounds/Talk Everyone.wav"
+dest_files=["res://.godot/imported/Talk Everyone.wav-21dae83019dfd8addbcfe990107a102d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

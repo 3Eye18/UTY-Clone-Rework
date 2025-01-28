@@ -1,0 +1,150 @@
+[gd_scene load_steps=11 format=3 uid="uid://ce247jgs2yxlq"]
+
+[ext_resource type="Script" path="res://Scripts/Cutscenes/intro.gd" id="1_8bf3t"]
+[ext_resource type="AudioStream" uid="uid://cqh4t5joeaahq" path="res://Asset/Sounds/SND_TXT2.wav" id="2_6iqo4"]
+[ext_resource type="Texture2D" uid="uid://cseiyf8yonx83" path="res://Asset/Sprites/Intro/Intro1.png" id="3_45r4s"]
+[ext_resource type="Texture2D" uid="uid://7pnah78y3set" path="res://Asset/Sprites/Intro/Intro2.png" id="4_5uegp"]
+[ext_resource type="Texture2D" uid="uid://bfi3dgoxdkpab" path="res://Asset/Sprites/Intro/Intro3.png" id="5_jaojg"]
+[ext_resource type="Texture2D" uid="uid://bcgu0dy1yeylw" path="res://Asset/Sprites/Intro/Intro Scale.png" id="6_jnw67"]
+[ext_resource type="FontFile" uid="uid://b3b3i4xaotdpc" path="res://Asset/Font/DeterminationMonoWebRegular-Z5oq.ttf" id="7_3ublb"]
+
+[sub_resource type="Animation" id="Animation_ndudv"]
+length = 0.001
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Intro1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Intro3:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g7kbg"]
+resource_name = "intro1"
+length = 13.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(6, 10, 11, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Intro1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6, 9.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Intro3:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(12.5, 13.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jmru"]
+_data = {
+"RESET": SubResource("Animation_ndudv"),
+"intro1": SubResource("Animation_g7kbg")
+}
+
+[node name="Intro_1" type="Node2D"]
+script = ExtResource("1_8bf3t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_6jmru")
+}
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_6iqo4")
+
+[node name="Intro1" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(320, 180)
+scale = Vector2(2, 2)
+texture = ExtResource("3_45r4s")
+
+[node name="Intro2" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+position = Vector2(320, 180)
+scale = Vector2(2, 2)
+texture = ExtResource("4_5uegp")
+
+[node name="Intro3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(320, 180)
+scale = Vector2(2, 2)
+texture = ExtResource("5_jaojg")
+
+[node name="IntroScale" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(320, 256)
+scale = Vector2(2, 2)
+texture = ExtResource("6_jnw67")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 112.0
+offset_top = 336.0
+offset_right = 528.0
+offset_bottom = 464.0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("7_3ublb")
+theme_override_font_sizes/font_size = 33
+autowrap_mode = 2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

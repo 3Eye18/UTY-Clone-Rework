@@ -1,0 +1,120 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1v12nyhmjwhg"]
+
+[ext_resource type="Script" path="res://Scripts/Rooms/main_menu.gd" id="1_r7xcq"]
+[ext_resource type="FontFile" uid="uid://b3b3i4xaotdpc" path="res://Asset/Font/DeterminationMonoWebRegular-Z5oq.ttf" id="2_6erus"]
+[ext_resource type="Texture2D" uid="uid://b8os7c0utokgd" path="res://Asset/Sprites/UI/Menu/Menu Steamworks.png" id="2_mcaip"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_r7xcq")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="MenuArt" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(320, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("2_mcaip")
+
+[node name="Control" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 512.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 32.0
+offset_right = 512.0
+offset_bottom = 228.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Name" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_6erus")
+theme_override_font_sizes/font_size = 33
+text = "Clover"
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_6erus")
+theme_override_font_sizes/font_size = 33
+text = "LV1	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Playtime" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_6erus")
+theme_override_font_sizes/font_size = 33
+text = "25:45"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Place" type="Label" parent="Control/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_6erus")
+theme_override_font_sizes/font_size = 33
+text = "Dunes - Cave"
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Empty" type="Label" parent="Control/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "        "
+
+[node name="Continue" type="Label" parent="Control/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_6erus")
+theme_override_font_sizes/font_size = 33
+text = "Continue"
+
+[node name="Reset" type="Label" parent="Control/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_6erus")
+theme_override_font_sizes/font_size = 33
+text = "Reset"
+
+[node name="Empty2" type="Label" parent="Control/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "        "
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Config" type="Label" parent="Control/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_6erus")
+theme_override_font_sizes/font_size = 33
+text = "Config"

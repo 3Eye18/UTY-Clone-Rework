@@ -1,0 +1,36 @@
+[music path="res://Asset/Musics/Menu/Intro.ogg" fade="0.0" volume="0.0" loop="false"]
+set {intro_text} = "For years, monsters have been sealed away by a powerful spell."
+set {intro_animation} = "intro1"
+[background scene="res://Scenes/Cutscenes/intro_1.tscn" fade="0.0"]
+[wait time="14.0"]
+set {intro_text} = "A spell that could only be broken with seven human souls."
+set {intro_animation} = "intro2"
+[background scene="res://Scenes/Cutscenes/intro_2.tscn" fade="0.0"]
+[wait time="9.5"]
+set {intro_text} = "Their king was peaceful and wished to avoid any more conflict..."
+set {intro_animation} = "intro3"
+[background scene="res://Scenes/Cutscenes/intro_3.tscn" fade="0.0"]
+[wait time="9.5"]
+set {intro_text} = "But eventually declared that any human who fell..."
+set {intro_animation} = "intro4"
+[background scene="res://Scenes/Cutscenes/intro_4.tscn" fade="0.0"]
+[wait time="8.5"]
+set {intro_text} = "Would die..."
+[signal arg="text_changed"]
+[wait time="6.0"]
+set {intro_text} = "Mt. Ebott..."
+set {intro_animation} = "intro5"
+[background scene="res://Scenes/Cutscenes/intro_5.tscn" fade="0.0"]
+[wait time="3.0"]
+set {intro_text} = "Few humans have braved this mountain."
+[signal arg="text_changed"]
+[wait time="5.0"]
+set {intro_text} = "Those who did... were never seen again."
+set {intro_animation} = "intro6"
+[background scene="res://Scenes/Cutscenes/intro_6.tscn" fade="0.0"]
+[wait time="7.0"]
+set {intro_text} = ""
+set {intro_animation} = "intro7"
+[background scene="res://Scenes/Cutscenes/intro_7.tscn" fade="0.0"]
+[wait time="38.5"]
+do LevelLoader.load_level_from_name("LOGO")

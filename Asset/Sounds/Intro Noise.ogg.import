@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dnrau64mrxe5v"
+path="res://.godot/imported/Intro Noise.ogg-066aeacd119bebd32dcc2421ab97a156.oggvorbisstr"
+
+[deps]
+
+source_file="res://Asset/Sounds/Intro Noise.ogg"
+dest_files=["res://.godot/imported/Intro Noise.ogg-066aeacd119bebd32dcc2421ab97a156.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

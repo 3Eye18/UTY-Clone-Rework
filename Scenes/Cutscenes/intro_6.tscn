@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvw5xtryofbp2"]
+
+[ext_resource type="Script" path="res://Scripts/Cutscenes/intro.gd" id="1_2lklf"]
+[ext_resource type="AudioStream" uid="uid://cqh4t5joeaahq" path="res://Asset/Sounds/SND_TXT2.wav" id="2_sdash"]
+[ext_resource type="Texture2D" uid="uid://ci4quhyb4eapt" path="res://Asset/Sprites/Intro/Intro10.png" id="3_meo7w"]
+[ext_resource type="Texture2D" uid="uid://bcgu0dy1yeylw" path="res://Asset/Sprites/Intro/Intro Scale.png" id="4_78un1"]
+[ext_resource type="FontFile" uid="uid://b3b3i4xaotdpc" path="res://Asset/Font/DeterminationMonoWebRegular-Z5oq.ttf" id="5_dpouk"]
+
+[sub_resource type="Animation" id="Animation_ndudv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro10:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1rejp"]
+resource_name = "intro6"
+length = 6.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro10:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 5.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jmru"]
+_data = {
+"RESET": SubResource("Animation_ndudv"),
+"intro6": SubResource("Animation_1rejp")
+}
+
+[node name="Intro_6" type="Node2D"]
+script = ExtResource("1_2lklf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_6jmru")
+}
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_sdash")
+
+[node name="Intro10" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+position = Vector2(320, 180)
+scale = Vector2(2, 2)
+texture = ExtResource("3_meo7w")
+
+[node name="IntroScale" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(320, 256)
+scale = Vector2(2, 2)
+texture = ExtResource("4_78un1")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 112.0
+offset_top = 336.0
+offset_right = 528.0
+offset_bottom = 464.0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("5_dpouk")
+theme_override_font_sizes/font_size = 33
+autowrap_mode = 2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
