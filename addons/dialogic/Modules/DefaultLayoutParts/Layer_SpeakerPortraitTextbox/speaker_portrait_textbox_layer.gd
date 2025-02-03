@@ -20,20 +20,6 @@ enum LimitedAlignments {LEFT=0, RIGHT=1}
 @export_file('*.ttf', '*.tres') var custom_italic_font: String = ""
 @export_file('*.ttf', '*.tres') var custom_bold_italic_font: String = ""
 
-@export_group('Name Label')
-@export_subgroup("Color")
-enum NameLabelColorModes {GLOBAL_COLOR, CHARACTER_COLOR, CUSTOM_COLOR}
-@export var name_label_color_mode: NameLabelColorModes = NameLabelColorModes.GLOBAL_COLOR
-@export var name_label_custom_color: Color = Color.WHITE
-@export_subgroup("Behaviour")
-@export var name_label_alignment: Alignments = Alignments.LEFT
-@export var name_label_hide_when_no_character: bool = false
-@export_subgroup("Font & Size")
-@export var name_label_use_global_size: bool = true
-@export var name_label_custom_size: int = 15
-@export var name_label_use_global_font: bool = true
-@export_file('*.ttf', '*.tres') var name_label_customfont: String = ""
-
 @export_group('Box')
 @export_subgroup("Box")
 @export_file('*.tres') var box_panel: String = this_folder.path_join("default_stylebox.tres")
@@ -46,7 +32,7 @@ enum NameLabelColorModes {GLOBAL_COLOR, CHARACTER_COLOR, CUSTOM_COLOR}
 @export_subgroup('Portrait')
 @export var portrait_stretch_factor: float = 0.3
 @export var portrait_position: LimitedAlignments = LimitedAlignments.LEFT
-@export var portrait_bg_modulate: Color = Color(0, 0, 0, 0.5137255191803)
+@export var portrait_bg_modulate: Color = Color(0, 0, 0, 0)
 
 
 ## Called by dialogic whenever export overrides might change
@@ -102,28 +88,3 @@ func _apply_export_overrides() -> void:
 	portrait_background_color.color = portrait_bg_modulate
 
 	portrait_panel.get_parent().move_child(portrait_panel, portrait_position)
-
-	## NAME LABEL SETTINGS
-	var name_label: DialogicNode_NameLabel = %DialogicNode_NameLabel
-	if name_label_use_global_size:
-		name_label.add_theme_font_size_override(&"font_size", get_global_setting(&'font_size', name_label_custom_size) as int)
-	else:
-		name_label.add_theme_font_size_override(&"font_size", name_label_custom_size)
-
-	var name_label_font: String = name_label_customfont
-	if name_label_use_global_font and ResourceLoader.exists(get_global_setting(&'font', '') as String):
-		name_label_font = get_global_setting(&'font', '')
-	if !name_label_font.is_empty():
-		name_label.add_theme_font_override(&'font', load(name_label_font) as Font)
-
-	name_label.use_character_color = false
-	match name_label_color_mode:
-		NameLabelColorModes.GLOBAL_COLOR:
-			name_label.add_theme_color_override(&"font_color", get_global_setting(&'font_color', name_label_custom_color) as Color)
-		NameLabelColorModes.CUSTOM_COLOR:
-			name_label.add_theme_color_override(&"font_color", name_label_custom_color)
-		NameLabelColorModes.CHARACTER_COLOR:
-			name_label.use_character_color = true
-
-	name_label.horizontal_alignment = name_label_alignment as HorizontalAlignment
-	name_label.hide_when_empty = name_label_hide_when_no_character

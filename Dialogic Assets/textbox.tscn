@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://by6waso0mjpjp"]
+[gd_scene load_steps=6 format=3 uid="uid://dungohrnbwt8h"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="1_4jxq7"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/speaker_portrait_textbox_layer.gd" id="1_7jt4d"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="3_11puy"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="5_sr2qw"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/speaker_portrait_textbox_layer.gd" id="1_1ckiq"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="2_nss5b"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="3_w1psv"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="4_d2wwg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmg1w"]
 bg_color = Color(0.254902, 0.254902, 0.254902, 1)
@@ -21,8 +21,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_7jt4d")
+script = ExtResource("1_1ckiq")
 box_panel = "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/default_stylebox.tres"
+portrait_bg_modulate = Color(0, 0, 0, 0.513726)
 
 [node name="Anchor" type="Control" parent="."]
 layout_mode = 1
@@ -60,6 +61,7 @@ theme_override_constants/separation = 15
 [node name="PortraitPanel" type="Panel" parent="Anchor/Panel/HBox"]
 unique_name_in_owner = true
 clip_children = 1
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
@@ -82,6 +84,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.231373)
 
 [node name="DialogicNode_PortraitContainer" type="Control" parent="Anchor/Panel/HBox/PortraitPanel/PortraitBackgroundColor"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,7 +93,7 @@ offset_top = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_4jxq7")
+script = ExtResource("2_nss5b")
 mode = 1
 container_ids = PackedStringArray("1")
 debug_character_portrait = "speaker"
@@ -109,8 +112,8 @@ bbcode_enabled = true
 text = "Some text"
 scroll_following = true
 visible_characters_behavior = 1
-script = ExtResource("3_11puy")
+script = ExtResource("3_w1psv")
 textbox_root = NodePath("../../..")
 
 [node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="Anchor/Panel/HBox/VBoxContainer/DialogicNode_DialogText"]
-script = ExtResource("5_sr2qw")
+script = ExtResource("4_d2wwg")

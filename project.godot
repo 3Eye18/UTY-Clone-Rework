@@ -22,12 +22,17 @@ LevelLoader="*res://Scripts/Level_Loader.gd"
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={
-"intro": "res://Timelines/intro.dtl"
+directories/dch_directory={
+"Ceroba": "res://Dialogic Assets/Character/Ceroba.dch",
+"Martlet": "res://Dialogic Assets/Character/Martlet.dch"
 }
-layout/style_list=["res://Dialogic/Intro.tres"]
-layout/default_style="res://Dialogic/Intro.tres"
+directories/dtl_directory={
+"SnowdinForest cutscene": "res://Dialogic Assets/Timeline/SnowdinForest cutscene.dtl",
+"battle_start": "res://Dialogic Assets/Timeline/battle_start.dtl",
+"intro": "res://Dialogic Assets/Timeline/intro.dtl"
+}
+layout/style_list=["res://Dialogic/New_File.tres"]
+layout/default_style="res://Dialogic/New_File.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cyd7vgb3rqx02" path="res://Asset/Sprites/Area/Snowdin Forest.png" id="1_1xilt"]
 [ext_resource type="Script" path="res://Scripts/Rooms/snowdin_forest.gd" id="1_vhvcf"]
+[ext_resource type="AudioStream" uid="uid://pggyf7huhlb7" path="res://Asset/Musics/Room/snowfall.ogg" id="2_fsnyp"]
 [ext_resource type="Texture2D" uid="uid://lf8qwkf6mgvd" path="res://Asset/Sprites/Area/Snowdin Forest Leaves.png" id="2_yie2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjnce"]
@@ -31,16 +32,17 @@ size = Vector2(66, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xsul4"]
 size = Vector2(66, 34)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lc8o"]
-size = Vector2(16, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec6y7"]
-size = Vector2(16, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48juf"]
+size = Vector2(240, 8)
 
 [node name="SnowdinForest" type="Node2D"]
 script = ExtResource("1_vhvcf")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fsnyp")
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="SnowdinForest" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -64,7 +66,6 @@ position = Vector2(419, 256)
 shape = SubResource("RectangleShape2D_ta7du")
 
 [node name="Marker2D" type="Marker2D" parent="SnowdinForest"]
-unique_name_in_owner = true
 position = Vector2(0, 231.5)
 
 [node name="Walls" type="StaticBody2D" parent="SnowdinForest"]
@@ -89,14 +90,16 @@ shape = SubResource("RectangleShape2D_kyd3w")
 position = Vector2(79, 238.5)
 shape = SubResource("RectangleShape2D_xsul4")
 
-[node name="Pole1" type="CollisionShape2D" parent="SnowdinForest/Walls"]
-position = Vector2(-48, 19.5)
-shape = SubResource("RectangleShape2D_8lc8o")
+[node name="Cutscene Trigger" type="Area2D" parent="SnowdinForest"]
 
-[node name="Pole2" type="CollisionShape2D" parent="SnowdinForest/Walls"]
-position = Vector2(52, 19.5)
-shape = SubResource("RectangleShape2D_ec6y7")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnowdinForest/Cutscene Trigger"]
+position = Vector2(0, -60.5)
+shape = SubResource("RectangleShape2D_48juf")
+
+[node name="Marker2D" type="Marker2D" parent="SnowdinForest/Cutscene Trigger"]
+position = Vector2(0, -32.5)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="body_entered" from="SnowdinForest/SnowdinForestLeaves/ShadowArea" to="." method="_on_shadow_area_body_entered"]
 [connection signal="body_exited" from="SnowdinForest/SnowdinForestLeaves/ShadowArea" to="." method="_on_shadow_area_body_exited"]
+[connection signal="body_entered" from="SnowdinForest/Cutscene Trigger" to="." method="_on_cutscene_trigger_body_entered"]

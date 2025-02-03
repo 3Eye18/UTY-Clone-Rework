@@ -1,8 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://c0oy0i2kmd5m2"]
+[gd_scene load_steps=37 format=3 uid="uid://c0oy0i2kmd5m2"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/clover.gd" id="1_mqv6t"]
 [ext_resource type="Shader" path="res://Scenes/Characters/clover_shadow.gdshader" id="2_mdni2"]
 [ext_resource type="Texture2D" uid="uid://do803b4nnk8gr" path="res://Asset/Sprites/Character/Sprite Cropped.png" id="2_wo6js"]
+[ext_resource type="Texture2D" uid="uid://fb6mn6dlruqc" path="res://Asset/Sprites/UI/Exclamation.png" id="4_1s3hs"]
+[ext_resource type="Texture2D" uid="uid://dxunbvo54ydud" path="res://Asset/Sprites/UI/SoulNormal.png" id="5_1ob7x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2k1r3"]
 shader = ExtResource("2_mdni2")
@@ -292,7 +294,8 @@ scale = Vector2(0.25, 0.25)
 shape = SubResource("RectangleShape2D_xyim4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 12.015)
+unique_name_in_owner = true
+position = Vector2(-3, 0)
 zoom = Vector2(3, 3)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -304,4 +307,20 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_k77wx")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, 0)
-parameters/Walk/blend_position = Vector2(-0.000937223, 0.0106382)
+parameters/Walk/blend_position = Vector2(-1, 0)
+
+[node name="HeadPopup" type="Node2D" parent="."]
+
+[node name="Exclamation" type="Sprite2D" parent="HeadPopup"]
+visible = false
+texture_filter = 1
+position = Vector2(-3, -22)
+texture = ExtResource("4_1s3hs")
+
+[node name="Soul" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="SoulNormal" type="Sprite2D" parent="Soul"]
+visible = false
+position = Vector2(-3, 6)
+texture = ExtResource("5_1ob7x")
