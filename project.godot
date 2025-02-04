@@ -58,6 +58,8 @@ variables={
 "intro_text": ""
 }
 glossary/default_case_sensitive=true
+animations/join_default="Instant In"
+animations/leave_default="Instant Out"
 
 [display]
 
