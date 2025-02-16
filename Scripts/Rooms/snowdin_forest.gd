@@ -51,7 +51,7 @@ func _on_cutscene_trigger_body_entered(body):
 			body, 
 			"position:x", 
 			cutscene_point.global_position.x, 
-			1
+			absf(cutscene_point.global_position.x - body.global_position.x) / body.speed
 		)
 		# Set blend position for horizontal movement
 		if body.global_position.x > cutscene_point.global_position.x:
@@ -71,6 +71,21 @@ func _on_cutscene_trigger_body_entered(body):
 			body.camera, 
 			"offset:y", 
 			-60, 
+			3
+		)
+		await tween.finished
+		
+		# Start timeline
+		Dialogic.start_timeline("SnowdinForest cutscene")
+		await Dialogic.timeline_ended
+		
+		# Move camera back
+		tween = get_tree().create_tween()
+		tween.tween_interval(1)
+		tween.tween_property(
+			body.camera, 
+			"offset:y", 
+			0, 
 			3
 		)
 		await tween.finished

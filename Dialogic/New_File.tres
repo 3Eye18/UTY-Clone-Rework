@@ -25,6 +25,18 @@ script = ExtResource("1_pu0dt")
 scene = ExtResource("3_hy7lx")
 overrides = {}
 
+[sub_resource type="Resource" id="Resource_8574c"]
+script = ExtResource("1_pu0dt")
+scene = ExtResource("8_i5m58")
+overrides = {
+"box_modulate_custom_color": "Color(1, 1, 1, 1)",
+"box_modulate_global_color": "false",
+"custom_normal_font": "\"res://Asset/Font/DeterminationMonoWebRegular-Z5oq.ttf\"",
+"text_custom_size": "40.0",
+"text_use_global_color": "false",
+"text_use_global_size": "false"
+}
+
 [sub_resource type="Resource" id="Resource_tsd17"]
 script = ExtResource("1_pu0dt")
 scene = ExtResource("5_2w8rl")
@@ -44,18 +56,6 @@ overrides = {}
 script = ExtResource("1_pu0dt")
 scene = ExtResource("8_qygki")
 overrides = {}
-
-[sub_resource type="Resource" id="Resource_8574c"]
-script = ExtResource("1_pu0dt")
-scene = ExtResource("8_i5m58")
-overrides = {
-"box_modulate_custom_color": "Color(1, 1, 1, 1)",
-"box_modulate_global_color": "false",
-"custom_normal_font": "\"res://Asset/Font/DeterminationMonoWebRegular-Z5oq.ttf\"",
-"text_custom_size": "40.0",
-"text_use_global_color": "false",
-"text_use_global_size": "false"
-}
 
 [sub_resource type="Resource" id="Resource_rjohd"]
 script = ExtResource("1_pu0dt")
@@ -79,4 +79,4 @@ layer_info = {
 }
 base_overrides = {}
 layers = Array[ExtResource("1_pu0dt")]([])
-metadata/_latest_layer = "17"
+metadata/_latest_layer = "12"

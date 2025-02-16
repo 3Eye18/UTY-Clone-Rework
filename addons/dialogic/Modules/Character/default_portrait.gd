@@ -10,6 +10,7 @@ extends DialogicPortrait
 
 ## Load anything related to the given character and portrait
 func _update_portrait(passed_character:DialogicCharacter, passed_portrait:String) -> void:
+	print(passed_character.get_character_name())
 	apply_character_and_portrait(passed_character, passed_portrait)
 
 	apply_texture($Portrait, image)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnpugd250sad5"]
+
+[ext_resource type="Script" path="res://Scripts/Cutscenes/main_intro.gd" id="1_gtflf"]
+
+[node name="MainIntro" type="Node2D"]
+script = ExtResource("1_gtflf")

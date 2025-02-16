@@ -30,7 +30,7 @@ enum LimitedAlignments {LEFT=0, RIGHT=1}
 
 @export_group('Portrait')
 @export_subgroup('Portrait')
-@export var portrait_stretch_factor: float = 0.3
+@export var portrait_stretch_factor: float = 0.5 #Please do not touch this shit istg
 @export var portrait_position: LimitedAlignments = LimitedAlignments.LEFT
 @export var portrait_bg_modulate: Color = Color(0, 0, 0, 0)
 

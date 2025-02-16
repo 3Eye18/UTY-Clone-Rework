@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var camera = %Camera2D
 
-@export var SPEED: float = 75
+@export var speed: float = 75
 @export var first_blend_position = Vector2(0, -1)
 
 var hardcoded_can_move: bool = true
@@ -28,7 +28,6 @@ func _physics_process(delta):
 				animation_tree.set("parameters/Idle/blend_position", direction)
 				animation_tree.set("parameters/Walk/blend_position", direction)
 			
-			var speed: float = SPEED
 			velocity = direction * speed
 			
 			move_and_slide()

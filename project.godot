@@ -19,6 +19,7 @@ config/icon="res://Asset/Sprites/Icon.png"
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 LevelLoader="*res://Scripts/Level_Loader.gd"
+Event="*res://Scripts/Event.gd"
 
 [dialogic]
 
@@ -29,6 +30,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "SnowdinForest cutscene": "res://Dialogic Assets/Timeline/SnowdinForest cutscene.dtl",
 "battle_start": "res://Dialogic Assets/Timeline/battle_start.dtl",
+"blackscreen": "res://Dialogic Assets/Timeline/blackscreen.dtl",
 "intro": "res://Dialogic Assets/Timeline/intro.dtl"
 }
 layout/style_list=["res://Dialogic/New_File.tres"]
@@ -41,11 +43,11 @@ text/advance_delay=0.1
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
 audio/max_channels=4.0
-animations/join_default_length=0.5
+animations/join_default_length=0.0
 animations/join_default_wait=true
-animations/leave_default_length=0.5
+animations/leave_default_length=0.0
 animations/leave_default_wait=true
-animations/cross_fade_default_length=0.5
+animations/cross_fade_default_length=0.0
 choices/autofocus_first=true
 choices/delay=0.2
 choices/reveal_delay=0
@@ -58,6 +60,14 @@ variables={
 "intro_text": ""
 }
 glossary/default_case_sensitive=true
+portraits/default_portrait="res://addons/dialogic/Example Assets/portraits/CustomPortrait_AnimatedSprite.tscn"
+text/input_action="accept"
+translation/enabled=false
+translation/original_locale="en"
+translation/file_mode=1
+translation/translation_folder=""
+translation/save_mode=0
+translation/add_separator=false
 
 [display]
 

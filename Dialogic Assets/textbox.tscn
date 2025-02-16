@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dungohrnbwt8h"]
+[gd_scene load_steps=7 format=3 uid="uid://dungohrnbwt8h"]
 
 [ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/speaker_portrait_textbox_layer.gd" id="1_1ckiq"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="2_nss5b"]
+[ext_resource type="StyleBox" uid="uid://cmpf1qxjh5tuw" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/default_stylebox.tres" id="2_xrwga"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="3_w1psv"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="4_d2wwg"]
 
@@ -52,11 +53,11 @@ offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_xrwga")
 
 [node name="HBox" type="HBoxContainer" parent="Anchor/Panel"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 15
 
 [node name="PortraitPanel" type="Panel" parent="Anchor/Panel/HBox"]
 unique_name_in_owner = true
@@ -64,7 +65,7 @@ clip_children = 1
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
+size_flags_stretch_ratio = 0.5
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dmg1w")
 

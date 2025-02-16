@@ -1,56 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyns86lydp1tl"]
+[gd_scene load_steps=6 format=3 uid="uid://cyns86lydp1tl"]
 
 [ext_resource type="Script" path="res://addons/dialogic/Example Assets/portraits/CustomPortrait_AnimatedSprite.gd" id="1_63c5k"]
-[ext_resource type="Texture2D" uid="uid://bfkpn7mrd786b" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5.png" id="2_15o4t"]
-[ext_resource type="Texture2D" uid="uid://s2jsr1aqiu84" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5 blink.png" id="3_qen6e"]
+[ext_resource type="Texture2D" uid="uid://bgcljdyk3pwdh" path="res://Asset/Sprites/Character/NPC/PC Computer - Undertale Yellow - Martlet.png" id="2_acpff"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htl10"]
+atlas = ExtResource("2_acpff")
+region = Rect2(2, 3929, 106, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfx7f"]
+atlas = ExtResource("2_acpff")
+region = Rect2(109, 3929, 106, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yaycq"]
 animations = [{
 "frames": [{
-"duration": 10.0,
-"texture": ExtResource("2_15o4t")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htl10")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_qen6e")
-}, {
-"duration": 5.0,
-"texture": ExtResource("2_15o4t")
-}, {
-"duration": 4.0,
-"texture": ExtResource("2_15o4t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_qen6e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_15o4t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_qen6e")
-}, {
-"duration": 5.0,
-"texture": ExtResource("2_15o4t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_qen6e")
-}, {
-"duration": 10.0,
-"texture": ExtResource("2_15o4t")
+"texture": SubResource("AtlasTexture_nfx7f")
 }],
-"loop": false,
-"name": &"default",
-"speed": 10.0
+"loop": true,
+"name": &"normal1",
+"speed": 5.0
 }]
 
 [node name="CustomCharacterScene" type="Node2D"]
-position = Vector2(160, 580)
+position = Vector2(320, 512)
 script = ExtResource("1_63c5k")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(-161, -580)
-scale = Vector2(0.751953, 0.751953)
+texture_filter = 1
+position = Vector2(-212, -512)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_yaycq")
-autoplay = "default"
+animation = &"normal1"
+frame_progress = 0.87997
 centered = false
-
-[connection signal="animation_finished" from="Sprite" to="." method="_on_animated_sprite_2d_animation_finished"]

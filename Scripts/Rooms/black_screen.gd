@@ -1,11 +1,9 @@
 extends DialogicLayoutLayer
 
 func _ready() -> void:
-	self.visible = false
-	Dialogic.signal_event.connect(_on_dialogic_event)
+	Event.connect("screen_blacken", _on_screen_blacken)
 
-func _on_dialogic_event(event: String):
-	if event == "black":
-		self.visible = true
-	if event == "not_black":
-		self.visible = false
+func _on_screen_blacken():
+	$AnimationPlayer.play("darken_screen")
+	await $AnimationPlayer.animation_finished
+	Event.emit_signal("screen_blacken_done")

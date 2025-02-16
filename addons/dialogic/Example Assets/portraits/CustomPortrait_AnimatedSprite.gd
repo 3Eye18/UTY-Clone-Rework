@@ -1,6 +1,9 @@
 @tool
 extends DialogicPortrait
 
+func _onready():
+	$Sprite.animation = "default"
+
 # If the custom portrait accepts a change, then accept it here
 func _update_portrait(passed_character:DialogicCharacter, passed_portrait:String) -> void:
 	if passed_portrait == "":
@@ -8,11 +11,12 @@ func _update_portrait(passed_character:DialogicCharacter, passed_portrait:String
 
 	if $Sprite.sprite_frames.has_animation(passed_portrait):
 		$Sprite.play(passed_portrait)
+	Dialogic.Text.text_finished.connect(shutup)
 
-func _on_animated_sprite_2d_animation_finished() -> void:
-	$Sprite.frame = randi()%$Sprite.sprite_frames.get_frame_count($Sprite.animation)
-	$Sprite.play()
-
+func shutup(dic: Dictionary):
+	print("shut")
+	$Sprite.stop()
+	$Sprite.frame = 0
 
 func _get_covered_rect() -> Rect2:
 	return Rect2($Sprite.position, $Sprite.sprite_frames.get_frame_texture($Sprite.animation, 0).get_size()*$Sprite.scale)
